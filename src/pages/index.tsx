@@ -79,6 +79,10 @@ export default function Home(props: HomeProps) {
 
   useEffect(() => {
     if (audioPlayerRef.current) {
+      if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+        audioPlayerRef.current.autoplay = true;
+      }
+
       audioPlayerRef.current.addEventListener("loadeddata", onLoadedAudioData);
       audioPlayerRef.current.addEventListener("ended", onEndedAudio);
     }
